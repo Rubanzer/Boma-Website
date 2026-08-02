@@ -82,6 +82,7 @@ export default function CollectionGrid({ prints }: { prints: Print[] }) {
                   <FramedPrint
                     print={print}
                     id={`grid-${print.slug}`}
+                    detail="lite"
                     className={
                       print.orientation === "portrait"
                         ? "mx-auto w-[62%]"

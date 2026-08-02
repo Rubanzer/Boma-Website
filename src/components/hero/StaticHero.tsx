@@ -1,3 +1,4 @@
+import BedroomScene from "@/components/art/BedroomScene";
 import FramedPrint from "@/components/art/FramedPrint";
 import {
   BRAND_FULL,
@@ -9,27 +10,26 @@ import Link from "next/link";
 
 /**
  * Reduced-motion / pre-mount fallback: the final composed state of the
- * scroll cinema — the framed print hung on the gallery wall, the
- * exclusivity copy, and the CTA. Same story, no motion.
+ * scroll cinema — the framed print hung on the bedroom wall, the
+ * exclusivity copy, and the invitation. Same story, no motion.
  */
 export default function StaticHero() {
   const print = getPrint("sovereign-of-musiara")!;
   return (
     <section
-      className="relative min-h-[100svh] overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(180deg, #262019 0%, #211d18 45%, #16130f 100%)",
-      }}
+      className="relative min-h-[100svh] overflow-hidden bg-ink"
       aria-label="Introduction"
     >
-      {/* spotlight */}
+      <div className="absolute inset-0">
+        <BedroomScene id="static-bedroom" className="h-full w-full" />
+      </div>
+      {/* scrim so the copy stays readable over the room */}
       <div
         aria-hidden
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 46% 60% at 38% 42%, rgba(232,210,160,0.14) 0%, rgba(232,210,160,0.05) 45%, transparent 70%)",
+            "linear-gradient(180deg, rgba(8,9,8,0.45) 0%, rgba(8,9,8,0.62) 45%, rgba(8,9,8,0.9) 100%)",
         }}
       />
       <div className="relative mx-auto grid min-h-[100svh] max-w-7xl items-center gap-14 px-6 py-32 md:grid-cols-2 md:px-12">
@@ -37,7 +37,7 @@ export default function StaticHero() {
           <FramedPrint
             print={print}
             id="static-hero"
-            className="w-full max-w-xl"
+            className="w-full max-w-lg"
           />
           <p className="mt-5 text-xs uppercase tracking-[0.22em] text-ash">
             {print.title} · {print.location} · {print.year} · Edition of{" "}
@@ -46,7 +46,7 @@ export default function StaticHero() {
         </div>
         <div>
           <p className="eyebrow mb-5">{BRAND_FULL}</p>
-          <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-bone">
+          <h1 className="font-display text-5xl text-bone md:text-6xl lg:text-7xl">
             The Mara, witnessed.
           </h1>
           <div className="mt-8 space-y-5">
@@ -56,7 +56,7 @@ export default function StaticHero() {
               </p>
             ))}
           </div>
-          <p className="mt-10 mb-2 eyebrow">The debut collection</p>
+          <p className="eyebrow mb-2 mt-10">The debut collection</p>
           <p className="font-display text-4xl uppercase tracking-[0.34em] text-bone">
             {COLLECTION_NAME}
           </p>

@@ -1,6 +1,6 @@
 "use client";
 
-import FramedPrint from "@/components/art/FramedPrint";
+import FramedPrint, { type FrameFinish } from "@/components/art/FramedPrint";
 import { useCart } from "@/components/providers/CartProvider";
 import {
   DEFAULT_CONFIG,
@@ -120,8 +120,7 @@ export default function Configurator({ print }: { print: Print }) {
             <FramedPrint
               print={print}
               id={`conf-${print.slug}`}
-              wood={frame.wood}
-              woodEdge={frame.woodEdge}
+              finish={frame.id as FrameFinish}
               glass={config.glassId === "museum"}
               className={
                 print.orientation === "portrait"
@@ -175,8 +174,7 @@ export default function Configurator({ print }: { print: Print }) {
               <FramedPrint
                 print={print}
                 id={`room-${print.slug}`}
-                wood={frame.wood}
-                woodEdge={frame.woodEdge}
+                finish={frame.id as FrameFinish}
                 glass={config.glassId === "museum"}
                 className={
                   print.orientation === "portrait"

@@ -61,11 +61,11 @@ export default function CraftPage() {
           <div className="grid gap-10 md:grid-cols-3">
             {(
               [
-                ["Unframed", "transparent", "transparent", false],
-                ["Natural Oak", "#8a6f4d", "#6e5638", true],
-                ["Ebonised Black", "#1c1a17", "#0e0d0b", true],
+                ["Unframed", "frameless", false],
+                ["Natural Oak", "natural-oak", true],
+                ["Ebonised Black", "ebonised", true],
               ] as const
-            ).map(([label, wood, edge, glass], i) => (
+            ).map(([label, finish, glass], i) => (
               <div key={label} className="text-center">
                 <div className="flex h-64 items-center justify-center bg-graphite/40 p-8">
                   <FramedPrint
@@ -76,8 +76,7 @@ export default function CraftPage() {
                       title: "Sovereign of Musiara",
                     }}
                     id={`craft-demo-${i}`}
-                    wood={wood}
-                    woodEdge={edge}
+                    finish={finish}
                     glass={glass}
                     className="w-full max-w-[260px]"
                   />

@@ -141,8 +141,7 @@ export default function Home() {
                 title: "The Tall Silence",
               }}
               id="about-teaser"
-              wood="#8a6f4d"
-              woodEdge="#6e5638"
+              finish="natural-oak"
               className="mx-auto w-full max-w-sm"
             />
           </Reveal>

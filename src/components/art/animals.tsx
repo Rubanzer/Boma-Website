@@ -16,23 +16,50 @@ export function AnimalSilhouette({
     case "elephant":
       return (
         <g fill={fill}>
-          {/* body + head + trunk */}
-          <path d="M18 70 L18 52 Q16 34 32 30 Q44 26 58 29 Q72 24 80 32 Q88 38 87 46 Q92 47 93 52 Q94 57 90 58 Q88 64 84 63 L82 56 Q80 50 78 56 L78 70 L72 70 L72 58 Q64 62 52 61 L50 70 L44 70 L44 60 Q36 60 30 56 L30 70 Z" />
+          {/* barrel body */}
+          <ellipse cx="46" cy="42" rx="26" ry="20" />
+          {/* domed head */}
+          <ellipse cx="75" cy="37" rx="15" ry="14" />
+          {/* legs — columnar, staggered for a walking gait */}
+          <path d="M27 55 L25 70 L34 70 L34 55 Z" />
+          <path d="M42 58 L41 70 L49 70 L48 58 Z" />
+          <path d="M57 56 L56 70 L64 70 L64 56 Z" />
+          <path d="M68 53 L68 70 L75 70 L74 53 Z" />
+          {/* trunk, curling forward */}
+          <path d="M85 39 Q92 47 90 57 Q89 65 83 68 L80 65 Q86 62 86 55 Q86 47 80 42 Z" />
           {/* tusk */}
-          <path d="M80 50 Q84 54 82 58 L80 57 Q81 53 78 51 Z" opacity="0.7" />
+          <path d="M83 47 Q89 52 88 58 L86 57 Q87 52 81 49 Z" opacity="0.75" />
           {/* ear */}
-          <path d="M52 30 Q42 28 38 38 Q36 48 46 52 Q54 54 58 48 Q60 36 52 30 Z" opacity="0.55" />
+          <ellipse cx="68" cy="40" rx="11" ry="13" opacity="0.6" />
+          {/* tail */}
+          <path d="M21 41 Q16 47 18 55 L20 54 Q19 47 23 43 Z" opacity="0.85" />
         </g>
       );
     case "lion":
       return (
         <g fill={fill}>
-          {/* maned head + body */}
-          <path d="M14 70 L15 56 Q12 44 22 40 Q30 36 44 38 L60 38 Q64 26 76 26 Q90 28 90 42 Q90 52 82 56 L82 70 L76 70 L76 58 L68 58 L66 70 L60 70 L58 56 Q42 58 32 54 L32 70 L24 70 L24 58 L20 70 Z" />
-          {/* mane */}
-          <path d="M60 40 Q58 24 74 20 Q92 20 94 38 Q96 52 84 58 Q78 60 72 58 Q62 54 60 40 Z" opacity="0.85" />
-          {/* tail */}
-          <path d="M14 56 Q6 58 6 64 Q6 68 10 68 Q8 64 12 62 Q16 60 16 58 Z" opacity="0.8" />
+          {/* hindquarters */}
+          <ellipse cx="34" cy="45" rx="15" ry="13" />
+          {/* torso */}
+          <path d="M28 34 L66 34 Q74 36 74 45 Q74 55 64 57 L34 57 Q26 55 26 45 Q26 37 28 34 Z" />
+          {/* shoulder */}
+          <ellipse cx="65" cy="45" rx="12" ry="12" />
+          {/* legs */}
+          <path d="M28 52 L25 70 L31 70 L33 52 Z" />
+          <path d="M38 54 L36 70 L42 70 L43 54 Z" />
+          <path d="M61 52 L59 70 L65 70 L66 52 Z" />
+          <path d="M69 52 L68 70 L74 70 L74 52 Z" />
+          {/* the mane — the whole silhouette of a male lion */}
+          <circle cx="78" cy="36" r="16" />
+          <ellipse cx="82" cy="36" rx="9" ry="8" />
+          {/* muzzle */}
+          <path d="M88 33 Q96 34 96 39 Q95 43 88 43 Q85 40 85 36 Z" />
+          {/* ears */}
+          <circle cx="70" cy="24" r="3.4" />
+          <circle cx="86" cy="24" r="3.2" />
+          {/* tail with tuft */}
+          <path d="M26 38 Q12 36 8 48 Q6 56 10 60 L13 58 Q10 54 12 48 Q15 40 27 43 Z" />
+          <ellipse cx="10" cy="61" rx="3.2" ry="4" />
         </g>
       );
     case "leopard":

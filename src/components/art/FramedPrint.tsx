@@ -1,5 +1,6 @@
 import type { Print as PrintModel } from "@/lib/types";
 import Print from "./Print";
+import { WoodFrameBorder, type WoodFinishId } from "./wood";
 
 const ASPECT: Record<string, string> = {
   landscape: "3 / 2",
@@ -7,29 +8,31 @@ const ASPECT: Record<string, string> = {
   square: "1 / 1",
 };
 
+export type FrameFinish = WoodFinishId | "frameless";
+
 /**
- * A print composed with mat, wood frame and (optional) museum glass.
- * Reused by the hero's final state, the collection grid, the product
+ * A print composed with mat, a real hardwood frame and (optional) museum
+ * glass. Reused by the hero's final state, the collection grid, the product
  * page and the room preview so the framed look never diverges.
  */
 export default function FramedPrint({
   print,
   id,
-  wood = "#4a3524",
-  woodEdge = "#332417",
+  finish = "dark-walnut",
   matted = true,
   glass = true,
+  detail = "full",
   className,
 }: {
   print: Pick<PrintModel, "animal" | "palette" | "orientation" | "title">;
   id: string;
-  wood?: string;
-  woodEdge?: string;
+  finish?: FrameFinish;
   matted?: boolean;
   glass?: boolean;
+  detail?: "full" | "lite";
   className?: string;
 }) {
-  const frameless = wood === "transparent";
+  const frameless = finish === "frameless";
   return (
     <div
       className={className}
@@ -41,30 +44,37 @@ export default function FramedPrint({
           frameless
             ? undefined
             : {
-                padding: "3.2%",
-                background: `linear-gradient(135deg, ${wood} 0%, ${woodEdge} 55%, ${wood} 100%)`,
+                padding: "3.4%",
                 boxShadow:
                   "0 22px 60px -18px rgba(0,0,0,0.75), 0 6px 18px -8px rgba(0,0,0,0.6)",
               }
         }
       >
+        {!frameless && (
+          <WoodFrameBorder id={`${id}-frame`} finish={finish} thickness="3.4%" />
+        )}
         <div
           className="relative h-full w-full"
           style={
             matted && !frameless
-              ? { padding: "5.5%", background: "#e7e2d6" }
+              ? { padding: "5.5%", background: "#e9e4d8" }
               : undefined
           }
         >
           <div className="relative h-full w-full overflow-hidden">
-            <Print print={print} id={id} className="h-full w-full" />
+            <Print
+              print={print}
+              id={id}
+              detail={detail}
+              className="h-full w-full"
+            />
             {glass && !frameless && (
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(115deg, rgba(255,255,255,0.16) 0%, rgba(255,255,255,0.03) 28%, rgba(255,255,255,0) 45%, rgba(255,255,255,0.05) 78%, rgba(255,255,255,0) 100%)",
+                    "linear-gradient(118deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.03) 30%, rgba(255,255,255,0) 48%, rgba(255,255,255,0.05) 80%, rgba(255,255,255,0) 100%)",
                 }}
               />
             )}
